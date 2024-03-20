@@ -47,7 +47,7 @@ export default function Home() {
       formData.append("file", file);
       if (file.type === "application/pdf") {
         const res = await axios.post(
-          "http://localhost:5000/analyze-pdf",
+          `${process.env.NEXT_PUBLIC_WORD_COUNT_API}/analyze-pdf`,
           formData,
           {
             headers: {
@@ -73,7 +73,7 @@ export default function Home() {
         "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
       ) {
         const res = await axios.post(
-          "http://localhost:5000/analyze-docx",
+          `${process.env.NEXT_PUBLIC_WORD_COUNT_API}/analyze-docx`,
           formData,
           {
             headers: {

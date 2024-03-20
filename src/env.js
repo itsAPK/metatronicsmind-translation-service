@@ -41,7 +41,7 @@ export const env = createEnv({
     AZURE_TRANSLATOR_URL: z.string(),
     RAZORPAY_KEY_ID: z.string(),
     RAZORPAY_KEY_SECRET: z.string(),
-    REVIEW_MAIL_ID : z.string()
+    REVIEW_MAIL_ID : z.string(),
   },
 
   /**
@@ -80,6 +80,7 @@ export const env = createEnv({
     RAZORPAY_KEY_SECRET: process.env.RAZORPAY_KEY_SECRET,
 
     REVIEW_MAIL_ID : process.env.REVIEW_MAIL_ID
+
     // DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
     // DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
   },
