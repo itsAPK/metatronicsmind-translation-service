@@ -70,7 +70,7 @@ export const SignupForm: React.FC<SignupFormProps> = ({
       });
 
       toast.success("Registration Successfull");
-      await router.push("/login");
+      await router.push("/auth/login");
     } catch (e) {
       if (createUser.error?.message.split(" ").includes("(`email`)")) {
         toast.error("E-mail Already Exists");

@@ -10,10 +10,7 @@ import "~/styles/globals.css";
 import { Header } from "~/components/Header";
 import { Toaster, toast } from 'sonner'
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
+
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -24,7 +21,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
       <ReactQueryDevtools initialIsOpen={false} />
       <Theme appearance="dark" panelBackground="solid" accentColor="violet">
           <Header/>
-        <main className={`font-sans ${inter.variable}`}>
+        <main className={`font-sans`}>
         <Toaster richColors closeButton  position="top-right"/>
           <Component {...pageProps} />
         </main>

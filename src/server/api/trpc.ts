@@ -127,3 +127,22 @@ export const protectedProcedure = t.procedure.use(({ ctx, next }) => {
     },
   });
 });
+
+export const adminProcedure = t.procedure.use(({ ctx , next }) => {
+  // eslint-disable-next-line @typescript-eslint/prefer-optional-chain
+  if (!ctx.session || !ctx.session.user) {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
+const user  = ctx.session.user.role as any
+  if(user !== 'ADMIN'){
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+
+  }
+  return next({
+    ctx: {
+      // infers the `session` as non-nullable
+      session: { ...ctx.session, user: ctx.session.user },
+    },
+  });
+});

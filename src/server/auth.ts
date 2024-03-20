@@ -44,6 +44,7 @@ export const authOptions: NextAuthOptions = {
               return {
                 id: user.id,
                 name: user.name,
+                role : user.role
               };
             }
           }
@@ -85,6 +86,7 @@ export const authOptions: NextAuthOptions = {
         };
       } else {
         if (token) {
+          console.log(token)
           // In subsequent requests, check access token has expired, try to refresh it
           if (Date.now() / 1000 > token.accessTokenExpired!) {
             const verifyToken = await jwtHelper.verifyToken(
@@ -117,13 +119,16 @@ export const authOptions: NextAuthOptions = {
       return token;
     },
 
-    async session({ session, token }) {
+    async session({ session, token,user } ) {
+      console.log(token)
       if (token) {
         session.user = {
-          name: token.user.name,
-          userId: token.user.id,
+          name: token.user.user.name,
+          userId: token.user.user.id,
+          role  : token.user.user.role
         };
       }
+      console.log(session)
       session.error = token.error;
       return session;
     

@@ -31,6 +31,17 @@ export const env = createEnv({
     JWT_SECRET: z.string(),
     MAILERSEND_API_KEY: z.string(),
     MAILERSEND_SENDER_MAIL: z.string(),
+    AZURE_ACCOUNT_KEY: z.string(),
+    AZURE_ACCOUNT_NAME: z.string(),
+    AZURE_BLOB_STORAGE_URL: z.string(),
+    AZURE_CONTAINER_NAME: z.string(),
+    AZURE_STORAGE_CONNECTION_STRING: z.string(),
+    AZURE_TRANSLATOR_CONTAINER_NAME: z.string(),
+    AZURE_TRANSLATOR_KEY: z.string(),
+    AZURE_TRANSLATOR_URL: z.string(),
+    RAZORPAY_KEY_ID: z.string(),
+    RAZORPAY_KEY_SECRET: z.string(),
+    REVIEW_MAIL_ID : z.string()
   },
 
   /**
@@ -54,6 +65,21 @@ export const env = createEnv({
     JWT_SECRET: process.env.JWT_SECRET,
     MAILERSEND_API_KEY: process.env.MAILERSEND_API_KEY,
     MAILERSEND_SENDER_MAIL: process.env.MAILERSEND_SENDER_MAIL,
+    AZURE_ACCOUNT_NAME: process.env.AZURE_ACCOUNT_NAME,
+    AZURE_ACCOUNT_KEY: process.env.AZURE_ACCOUNT_KEY,
+    AZURE_CONTAINER_NAME: process.env.AZURE_CONTAINER_NAME,
+    AZURE_STORAGE_CONNECTION_STRING:
+      process.env.AZURE_STORAGE_CONNECTION_STRING,
+    AZURE_BLOB_STORAGE_URL: process.env.AZURE_BLOB_STORAGE_URL,
+    AZURE_TRANSLATOR_CONTAINER_NAME:
+      process.env.AZURE_TRANSLATOR_CONTAINER_NAME,
+    AZURE_TRANSLATOR_KEY: process.env.AZURE_TRANSLATOR_KEY,
+    AZURE_TRANSLATOR_URL: process.env.AZURE_TRANSLATOR_URL,
+
+    RAZORPAY_KEY_ID: process.env.RAZORPAY_KEY_ID,
+    RAZORPAY_KEY_SECRET: process.env.RAZORPAY_KEY_SECRET,
+
+    REVIEW_MAIL_ID : process.env.REVIEW_MAIL_ID
     // DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
     // DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
   },

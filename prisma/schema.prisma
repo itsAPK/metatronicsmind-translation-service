@@ -17,13 +17,81 @@ datasource db {
 enum Role {
     INDIVIDUAL
     ORGANIZATION
+    ADMIN
+}
+
+enum Status {
+    UNDER_REVIEW
+    APPROVED
+    REJECTED
 }
 
 model User {
-    id       String  @id @default(cuid())
-    name     String
-    email    String  @unique
-    role     Role
-    password String
-    gstin    String?
+    id              String            @id @default(cuid())
+    name            String
+    email           String            @unique
+    role            Role
+    password        String
+    gstin           String?
+    createAt        DateTime?         @default(now())
+    TranslationInfo TranslationInfo[]
+    PaymentHistory  PaymentHistory[]
+    Discount        Discount?
+
+}
+
+model Language {
+    id              String            @id @default(cuid())
+    name            String
+    code            String            @unique
+    pricePerWord    Float             @default(0.5)
+    pricePerPage    Float             @default(2)
+    TranslatedFiles TranslatedFiles[]
+}
+
+model TranslationInfo {
+    id              String            @id @default(cuid())
+    user            User              @relation(fields: [userId], references: [id])
+    userId          String
+    fileName        String
+    totalWords      Int
+    totalAmount     Int
+    createdAt       DateTime?         @default(now())
+    blobLink        String
+    TranslatedFiles TranslatedFiles[]
+    isApproved      Boolean           @default(false)
+    status          Status            @default(UNDER_REVIEW)
+    PaymentHistory  PaymentHistory[]
+}
+
+model TranslatedFiles {
+    id                String          @id @default(cuid())
+    file              String
+    translationInfo   TranslationInfo @relation(fields: [translationInfoId], references: [id])
+    translationInfoId String
+    language          Language        @relation(fields: [languageId], references: [code])
+    languageId        String
+    createdAt         DateTime?       @default(now())
+    totalWords        Int
+}
+
+model PaymentHistory {
+    id                String          @id @default(cuid())
+    orderId           String
+    paymentId         String
+    signature         String
+    recipet           String
+    amount            Int
+    user              User            @relation(fields: [userId], references: [id])
+    translation       TranslationInfo @relation(fields: [translationInfoId], references: [id])
+    createdAt         DateTime?       @default(now())
+    userId            String
+    translationInfoId String
+}
+
+model Discount {
+    id     String  @id @default(cuid())
+    discount Decimal
+    user   User    @relation(fields: [userId], references: [id])
+    userId String @unique
 }

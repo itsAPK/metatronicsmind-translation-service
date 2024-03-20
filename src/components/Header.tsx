@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Grid, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import { EnterIcon, ExitIcon } from "@radix-ui/react-icons";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { toast } from "sonner";
 import { useRouter } from "next/router";
 
@@ -14,11 +14,11 @@ const items = [
     link: "/",
   },
   {
-    name: "About Us",
-    link: "/",
+    name: "Translations",
+    link: "/translations",
   },
   {
-    name: "Product",
+    name: "About Us",
     link: "/",
   },
   {
@@ -28,7 +28,7 @@ const items = [
 ];
 
 export const Header: React.FC<HeaderProps> = () => {
-  const { status } = useSession();
+  const { status, data: session } = useSession();
   const router = useRouter();
 
   return (
@@ -40,9 +40,10 @@ export const Header: React.FC<HeaderProps> = () => {
     >
       <Box>
         <Link href="/">
-          <Text className="font-league-spartans text-3xl font-bold uppercase hover:cursor-pointer hover:text-gray-400">
-            Metatronicmind
+          <Text className="font-league-spartans text-2xl font-bold uppercase hover:cursor-pointer hover:text-gray-400">
+            Metatronicmind AI Translator
           </Text>
+         
         </Link>
       </Box>
       <Box className="uppercase">
@@ -57,6 +58,14 @@ export const Header: React.FC<HeaderProps> = () => {
               </Link>
             </Box>
           ))}{" "}
+          {session && session.user.role === "ADMIN" ? (
+            <Link
+              href={"/admin"}
+              className="text- rounded-lg  border-0  px-4 py-2 font-semibold  hover:text-[#b0aae4ff]"
+            >
+              Admin Panel
+            </Link>
+          ) : null}
           <Box>
             {status != "authenticated" ? (
               <>
@@ -74,7 +83,7 @@ export const Header: React.FC<HeaderProps> = () => {
                   </Button>
                 ) : (
                   <Button
-                    onClick={() => router.push("/auth/login")}
+                    onClick={() => router.push("/auth/register")}
                     size={"2"}
                     variant="surface"
                     className="cursor-pointer px-6 uppercase "
@@ -90,6 +99,13 @@ export const Header: React.FC<HeaderProps> = () => {
                 size={"2"}
                 variant="surface"
                 className="cursor-pointer px-6 uppercase "
+                onClick={async () => {
+                  await signOut({
+                    redirect: true,
+                    callbackUrl: "/auth/login",
+                  });
+                  await router.push("/auth/login");
+                }}
               >
                 {" "}
                 <ExitIcon />
