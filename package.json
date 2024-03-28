@@ -101,7 +101,6 @@
     "eslint-config-next": "^14.1.0",
     "file-loader": "^6.2.0",
     "jsonwebtoken": "^9.0.2",
-    "jsonwebtoken`": "link:@types/jsonwebtoken`",
     "postcss": "^8.4.34",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",

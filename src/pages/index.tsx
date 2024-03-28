@@ -248,6 +248,7 @@ export default function Home() {
               }
 
               setLoading(true);
+              toast.success('Your file is translating it may take few minutes')
               const files: {
                 blobName: string;
                 blobUrl: string;
