@@ -9,6 +9,7 @@ import "@radix-ui/themes/styles.css";
 import "~/styles/globals.css";
 import { Header } from "~/components/Header";
 import { Toaster, toast } from 'sonner'
+import Head from "next/head";
 
 
 
@@ -23,6 +24,10 @@ const MyApp: AppType<{ session: Session | null }> = ({
           <Header/>
         <main className={`font-sans`}>
         <Toaster richColors closeButton  position="top-right"/>
+        <Head>
+      <link rel="shortcut icon" href="logo.png" />
+      <title>AI Translator</title>
+    </Head>
           <Component {...pageProps} />
         </main>
       </Theme>

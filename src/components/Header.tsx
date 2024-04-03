@@ -11,7 +11,7 @@ interface HeaderProps {}
 const items = [
   {
     name: "Home",
-    link: "/",
+    link: "https://metatronicmind.ai",
   },
   {
     name: "Translations",
@@ -19,11 +19,11 @@ const items = [
   },
   {
     name: "About Us",
-    link: "/",
+    link: "https://metatronicmind.ai/about-us",
   },
   {
     name: "Contact Us",
-    link: "/",
+    link: "https://metatronicmind.ai/contact-us",
   },
 ];
 
