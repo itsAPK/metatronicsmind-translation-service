@@ -26,7 +26,7 @@ interface ReviewFilesProps {
   rejectLink: string;
 }
 
-const baseUrl = "http://localhost:3000";
+const baseUrl = "https://ai-translation.metatronicmind.ai";
 export const ReviewFilesEmail = ({
   user,
   info,

@@ -69,10 +69,10 @@ export const userRouter = createTRPCRouter({
           email: user.email,
           name: user.name,
           subject: "RestPassword",
-          link: `http://localhost:3000/auth/reset-password?token=${token}`,
+          link: `https://ai-translation.metatronicmind.ai/auth/reset-password?token=${token}`,
         });
         return {
-          url: `http://localhost:3000/auth/reset-password?token=${token}`,
+          url: `https://ai-translation.metatronicmind.ai/auth/reset-password?token=${token}`,
         };
       } catch (e) {
         throw e;

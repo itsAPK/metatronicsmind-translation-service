@@ -16,6 +16,15 @@ const mailerSend = new MailerSend({
   apiKey: env.MAILERSEND_API_KEY,
 });
 
+const transport = nodemailer.createTransport({
+  host: "smtpout.secureserver.net",
+  port: 465,
+  auth: {
+    user: "translations@metatronicmind.ai",
+    pass: "MMTTranslator",
+  },
+});
+
 export const senResetPasswordMail = async ({
   email,
   name,
@@ -31,20 +40,9 @@ export const senResetPasswordMail = async ({
     const template = render(
       <ResetPasswordEmail userFirstname={name} resetPasswordLink={link} />,
     );
-    const sentFrom = new Sender(
-      env.MAILERSEND_SENDER_MAIL,
-      "Metatronicminds Team",
-    );
-    const transport = nodemailer.createTransport({
-      host: "sandbox.smtp.mailtrap.io",
-      port: 2525,
-      auth: {
-        user: "b052d8303b9542",
-        pass: "e98acee4da7548",
-      },
-    });
+    
     const options = {
-      from: "you@example.com",
+      from: "translations@metatronicmind.ai",
       to: email,
       subject: "Translation Request",
       html: template,
@@ -95,22 +93,15 @@ export const sendReviewMail = async ({
     // console.log(emailParams);
     // const a = await mailerSend.email.send(emailParams);
 
-    const transport = nodemailer.createTransport({
-      host: "sandbox.smtp.mailtrap.io",
-      port: 2525,
-      auth: {
-        user: "b052d8303b9542",
-        pass: "e98acee4da7548",
-      },
-    });
+   
     const options = {
-      from: "you@example.com",
-      to: user.email,
+      from: "translations@metatronicmind.ai",
+      to: env.REVIEW_MAIL_ID,
       subject: "Translation Request",
       html: template,
     };
     const a = await transport.sendMail(options);
-
+console.log(a)
     return a;
   } catch (e) {
     console.log(e);
@@ -137,16 +128,9 @@ export const sendApproveddMail = async ({
       env.MAILERSEND_SENDER_MAIL,
       "Metatronicminds Team",
     );
-    const transport = nodemailer.createTransport({
-      host: "sandbox.smtp.mailtrap.io",
-      port: 2525,
-      auth: {
-        user: "b052d8303b9542",
-        pass: "e98acee4da7548",
-      },
-    });
+  
     const options = {
-      from: "you@example.com",
+      from: "translations@metatronicmind.ai",
       to: email,
       subject: "Translation Request Approved",
       html: template,
@@ -180,16 +164,9 @@ export const senRejectMail = async ({
       env.MAILERSEND_SENDER_MAIL,
       "Metatronicminds Team",
     );
-    const transport = nodemailer.createTransport({
-      host: "sandbox.smtp.mailtrap.io",
-      port: 2525,
-      auth: {
-        user: "b052d8303b9542",
-        pass: "e98acee4da7548",
-      },
-    });
+  
     const options = {
-      from: "you@example.com",
+      from: "translations@metatronicmind.ai",
       to: email,
       subject: "Translation Request Rejected",
       html: template,

@@ -41,7 +41,7 @@ import {
             <Section>
               <Text style={text}>Hi {userFirstname},</Text>
               <Text style={text}>
-              {`We're pleased to inform you that your translation request for the file ${fileName} has been Rejectedd.`}              </Text>
+              {`We're pleased to inform you that your translation request for the file ${fileName} has been Rejected.`}              </Text>
               <Button style={button} href={link}>
                 Download {fileName}
               </Button>

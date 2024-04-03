@@ -42,7 +42,7 @@ import {
               <Text style={text}>Hi {userFirstname},</Text>
               <Text style={text}>
               {`We're pleased to inform you that your translation request for the file ${fileName} has been approved.`}              </Text>
-              <Text style={text}>  To view Translation result   <Link href="http://localhost:3000/history">go to this link.</Link></Text>
+              <Text style={text}>  To view Translation result   <Link href="https://ai-translation.metatronicmind.ai/history">go to this link.</Link></Text>
               <Button style={button} href={link}>
                 Download {fileName}
               </Button>

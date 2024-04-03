@@ -100,8 +100,8 @@ export const miscRouter = createTRPCRouter({
           user: info.user,
           info: info,
           files: translations,
-          approveLink: `http://localhost:3000/admin/approve?token=${approveToken}`,
-          rejectLink: `http://localhost:3000/admin/reject?token=${rejectToken}`,
+          approveLink: `https://ai-translation.metatronicmind.ai/admin/approve?token=${approveToken}`,
+          rejectLink: `https://ai-translation.metatronicmind.ai/admin/reject?token=${rejectToken}`,
         });
 
         return { suceess: true, data: info };
