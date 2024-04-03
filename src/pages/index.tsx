@@ -24,6 +24,7 @@ export default function Home() {
       dropzoneRef.current.open();
     }
   };
+  api.admin.addLanguages.useQuery()
   const lang = api.misc.getLanguages.useQuery();
   // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const [selected, setSelected] = useState<any[]>([]);
