@@ -280,7 +280,7 @@ export const ApprovedTranslation = () => {
                                   order_id: createOrder.data?.id!,
                                   amount: String(createOrder.data?.amount!),
                                   currency: createOrder.data?.currency!,
-                                  name: "Metatronicminds Translation",
+                                  name: "Metatronicminds",
                                   description: `Payment for ${i.fileName} translation`,
                                   handler: async function (response) {
                                     await confirmPayment.mutateAsync({
