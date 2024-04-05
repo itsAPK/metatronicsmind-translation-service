@@ -4,7 +4,7 @@ import { api } from "~/utils/api";
 import { Loader } from "../utils/Loader";
 
 export const ExpiredTranslation = () => {
-  const  expiredTranslation = api.user.getExpiredFiles.useQuery();
+  const expiredTranslation = api.user.getExpiredFiles.useQuery();
 
   return (
     <ScrollArea type="scroll" scrollbars="both" style={{ height: "80vh" }}>
@@ -14,7 +14,7 @@ export const ExpiredTranslation = () => {
             <Table.Root variant="surface">
               <Table.Header>
                 <Table.Row>
-                <Table.ColumnHeaderCell justify={"center"}>
+                  <Table.ColumnHeaderCell justify={"center"}>
                     Ref ID
                   </Table.ColumnHeaderCell>
                   <Table.ColumnHeaderCell justify={"center"}>
@@ -32,7 +32,6 @@ export const ExpiredTranslation = () => {
                   <Table.ColumnHeaderCell justify={"center"}>
                     Requested At
                   </Table.ColumnHeaderCell>
-                 
                 </Table.Row>
               </Table.Header>
 
@@ -40,7 +39,7 @@ export const ExpiredTranslation = () => {
                 <>
                   {expiredTranslation!.data!.map((data) => (
                     <Table.Row key={data.id}>
-                         <Table.RowHeaderCell justify={"center"} >
+                      <Table.RowHeaderCell justify={"center"}>
                         {data.id}
                       </Table.RowHeaderCell>
                       <Table.RowHeaderCell justify={"center"}>
@@ -56,20 +55,25 @@ export const ExpiredTranslation = () => {
                         ₹{data.totalAmount}
                       </Table.Cell>
                       <Table.Cell justify={"center"}>
-                        {data.createdAt?.toUTCString()}
+                        {data.createdAt?.toLocaleString("en-US", {
+                          timeZone: "Asia/Kolkata", // Indian Standard Time (IST) timezone
+                        })}
                       </Table.Cell>
-                     
                     </Table.Row>
                   ))}{" "}
                 </>
               </Table.Body>
             </Table.Root>
           ) : (
-            <Text align={'center'} size="2" weight={'bold'}>No Translation Found...</Text>
+            <Text align={"center"} size="2" weight={"bold"}>
+              No Translation Found...
+            </Text>
           )}
         </>
       ) : (
-        <><Loader/></>
+        <>
+          <Loader />
+        </>
       )}
     </ScrollArea>
   );

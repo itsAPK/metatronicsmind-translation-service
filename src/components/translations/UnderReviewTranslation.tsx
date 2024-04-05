@@ -59,7 +59,9 @@ export const UnderReviewTranslation = () => {
                         ₹{data.totalAmount}
                       </Table.Cell>
                       <Table.Cell justify={"center"}>
-                        {data.createdAt?.toUTCString()}
+                        {data.createdAt?.toLocaleString("en-US", {
+                          timeZone: "Asia/Kolkata", // Indian Standard Time (IST) timezone
+                        })}
                       </Table.Cell>
                       <Table.Cell justify={"center"}>
                         <Link href={data.blobLink} target="_blank">

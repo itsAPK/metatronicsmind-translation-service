@@ -69,7 +69,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({}) => {
             size={"3"}
             variant="classic"
             type="email"
-            placeholder="email@metatronicminds.com"
+            placeholder="email@email.com"
             className="focus:outline-none"
             {...register("email")}
           />

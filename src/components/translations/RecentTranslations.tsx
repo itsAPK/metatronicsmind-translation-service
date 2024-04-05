@@ -147,7 +147,9 @@ export const RecentTranslation = () => {
                               Requested At
                             </Text>
                             <Text size="1" weight={"bold"}>
-                              {i.createdAt?.toISOString()}
+                              {i.createdAt?.toLocaleString("en-US", {
+                                timeZone: "Asia/Kolkata", // Indian Standard Time (IST) timezone
+                              })}
                             </Text>
                           </Grid>
                         </Box>
