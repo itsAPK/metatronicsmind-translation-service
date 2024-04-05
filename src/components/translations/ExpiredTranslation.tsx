@@ -55,9 +55,9 @@ export const ExpiredTranslation = () => {
                         ₹{data.totalAmount}
                       </Table.Cell>
                       <Table.Cell justify={"center"}>
-                        {data.createdAt?.toLocaleString("en-US", {
-                          timeZone: "Asia/Kolkata", // Indian Standard Time (IST) timezone
-                        })}
+                      {data.createdAt?.toLocaleString("en-US", {
+                               timeZone: "UTC"  // Indian Standard Time (IST) timezone
+                              })} UTC
                       </Table.Cell>
                     </Table.Row>
                   ))}{" "}

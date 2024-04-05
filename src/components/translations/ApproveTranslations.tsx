@@ -144,8 +144,9 @@ export const ApprovedTranslation = () => {
                               Requested At
                             </Text>
                             <Text size="1" weight={"bold"}>
-                              {i.createdAt?.toISOString()}
-                            </Text>
+                            {i.createdAt?.toLocaleString("en-US", {
+                               timeZone: "UTC"  // Indian Standard Time (IST) timezone
+                              })} UTC                            </Text>
                           </Grid>
                         </Box>
                       </Flex>
