@@ -148,8 +148,8 @@ export const RecentTranslation = () => {
                             </Text>
                             <Text size="1" weight={"bold"}>
                               {i.createdAt?.toLocaleString("en-US", {
-                                timeZone: "Asia/Kolkata", // Indian Standard Time (IST) timezone
-                              })}
+                               timeZone: "UTC"  // Indian Standard Time (IST) timezone
+                              })} UTC
                             </Text>
                           </Grid>
                         </Box>

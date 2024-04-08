@@ -157,7 +157,7 @@ export default function Home() {
                 lang.data
                   ? lang.data?.map((i) => ({
                       value: i.code,
-                      label: `${i.name} (₹${i.pricePerWord * words})`,
+                      label: `${i.name} (₹${Number(i.pricePerWord * words).toFixed(2)})`,
                     }))
                   : []
               }

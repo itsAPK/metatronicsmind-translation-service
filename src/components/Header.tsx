@@ -46,7 +46,7 @@ export const Header: React.FC<HeaderProps> = () => {
             </div>
           <div className="grid"> 
           <Text className="font-league-spartans text-xl font-bold uppercase hover:cursor-pointer hover:text-gray-400">
-          Metatronicminds 
+          Metatronicminds
           </Text>
           <Text className="font-league-spartans -mt-2 text-lg font-bold uppercase hover:cursor-pointer hover:text-gray-400">
         AI Translator
