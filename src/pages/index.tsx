@@ -38,7 +38,6 @@ export default function Home() {
   useEffect(() => {
     if (status === "unauthenticated") {
       router.push("/auth/login");
-      toast.error("Session Expired.");
     }
   }, [router, status]);
   const getCount = useMutation({
@@ -68,6 +67,16 @@ export default function Home() {
 
         setPages(res.data.pages);
         setWords(res.data.words);
+        setSelected((prev) =>
+          prev.map((i) => ({
+            value: i.code,
+            label: `${i.lang} (₹${Number(i.price * res.data.words).toFixed(2)})`,
+            lang: i.lang,
+            price: i.price,
+          })),
+        )
+
+        console.log(selected)
         return res.data;
       } else if (
         file.type ===
@@ -91,8 +100,21 @@ export default function Home() {
             },
           },
         );
+      
         setPages(res.data.pages);
         setWords(res.data.words);
+
+        setSelected((prev) =>
+          prev.map((i) => ({
+            value: i.code,
+            label: `${i.lang} (₹${Number(i.price * res.data.words).toFixed(2)})`,
+            lang: i.lang,
+            price: i.price,
+          })),
+        )
+
+         
+        
 
         return res.data;
       }
@@ -158,6 +180,8 @@ export default function Home() {
                   ? lang.data?.map((i) => ({
                       value: i.code,
                       label: `${i.name} (₹${Number(i.pricePerWord * words).toFixed(2)})`,
+                      lang: `${i.name}`,
+                      price: i.pricePerWord,
                     }))
                   : []
               }
@@ -176,7 +200,9 @@ export default function Home() {
             accept={{ "application/pdf": [".pdf", ".docx"] }}
             onDrop={async (e) => {
               setFile(e);
-              getCount.mutate(e[0]!);
+              await getCount.mutateAsync(e[0]!);
+            
+
             }}
           >
             {({ getRootProps, getInputProps, acceptedFiles }) => {
@@ -249,7 +275,7 @@ export default function Home() {
               }
 
               setLoading(true);
-              toast.success('Your file is translating it may take few minutes')
+              toast.success("Your file is translating it may take few minutes");
               const files: {
                 blobName: string;
                 blobUrl: string;

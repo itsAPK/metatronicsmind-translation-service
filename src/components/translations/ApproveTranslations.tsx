@@ -313,7 +313,7 @@ export const ApprovedTranslation = () => {
                               }
                             }}
                           >
-                            <LockClosedIcon /> Unlock Translation Files
+                            <LockClosedIcon /> Download Translation Files
                           </Button>
                         ) : null}
                       </Flex>

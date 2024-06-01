@@ -1,8 +1,7 @@
-import { Box, Button, Flex, Grid, Text,Avatar } from "@radix-ui/themes";
+import { Box, Button, Flex, Text, Avatar } from "@radix-ui/themes";
 import Link from "next/link";
 import { EnterIcon, ExitIcon } from "@radix-ui/react-icons";
 import { signOut, useSession } from "next-auth/react";
-import { toast } from "sonner";
 import { useRouter } from "next/router";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -40,20 +39,26 @@ export const Header: React.FC<HeaderProps> = () => {
     >
       <Box>
         <Link href="/">
-          <div className="flex space-x-3 items-center">
+          <div className="flex items-center space-x-3">
             <div>
-              <Avatar src="/logo.png" size={'5'} alt='logo' width={80} height={10} fallback={""}/>
+              <Avatar
+                src="/logo.png"
+                size={"5"}
+                alt="logo"
+                width={80}
+                height={10}
+                fallback={""}
+              />
             </div>
-          <div className="grid"> 
-          <Text className="font-league-spartans text-xl font-bold uppercase hover:cursor-pointer hover:text-gray-400">
-          Metatronicmind
-          </Text>
-          <Text className="font-league-spartans -mt-2 text-lg font-bold uppercase hover:cursor-pointer hover:text-gray-400">
-        AI Translator
-          </Text>
+            <div className="grid">
+              <Text className="font-league-spartans text-xl font-bold uppercase hover:cursor-pointer hover:text-gray-400">
+                Metatronicmind
+              </Text>
+              <Text className="font-league-spartans -mt-2 text-lg font-bold uppercase hover:cursor-pointer hover:text-gray-400">
+                AI Translator
+              </Text>
+            </div>
           </div>
-          </div>
-         
         </Link>
       </Box>
       <Box className="uppercase">
