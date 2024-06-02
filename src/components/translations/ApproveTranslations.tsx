@@ -129,7 +129,7 @@ export const ApprovedTranslation = () => {
                               Total Amount
                             </Text>
                             <Text size="1" weight={"bold"} align={"center"}>
-                              ₹{i.totalAmount}
+                              ₹{Number(i.totalAmount).toFixed(2)}
                             </Text>
                           </Grid>
                         </Box>{" "}
@@ -207,7 +207,7 @@ export const ApprovedTranslation = () => {
                                 </Table.Cell>
                                 <Table.Cell justify={"center"}>
                                   ₹
-                                  {data.totalWords * data.language.pricePerWord}
+                                  {Number(data.totalWords * data.language.pricePerWord).toFixed(2)}
                                 </Table.Cell>
                                 <Table.Cell justify={"center"}>
                                   <Flex justify={"center"} gap={"3"}>
@@ -313,7 +313,7 @@ export const ApprovedTranslation = () => {
                               }
                             }}
                           >
-                            <LockClosedIcon /> Download Translation Files
+                            <LockClosedIcon /> Download Translated Files
                           </Button>
                         ) : null}
                       </Flex>
