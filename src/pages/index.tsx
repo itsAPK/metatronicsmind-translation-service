@@ -68,12 +68,13 @@ export default function Home() {
         setPages(res.data.pages);
         setWords(res.data.words);
         setSelected((prev) =>
-          prev.map((i) => ({
-            value: i.code,
+         
+           prev.map((i) => ({
+            value: i.value,
             label: `${i.lang} (₹${Number(i.price * res.data.words).toFixed(2)})`,
             lang: i.lang,
             price: i.price,
-          })),
+          }))
         )
 
         console.log(selected)
@@ -106,7 +107,7 @@ export default function Home() {
 
         setSelected((prev) =>
           prev.map((i) => ({
-            value: i.code,
+            value: i.value,
             label: `${i.lang} (₹${Number(i.price * res.data.words).toFixed(2)})`,
             lang: i.lang,
             price: i.price,
@@ -286,7 +287,7 @@ export default function Home() {
                 const formData = new FormData();
                 formData.append("file", file[0]!);
                 formData.append("id", v4());
-
+console.log(i)
                 try {
                   const response = await fetch("/api/upload-to-blob", {
                     method: "POST",
